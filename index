@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Felo AI Widget</title>
+  <style>
+    /* 重設部分預設樣式 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    /* 版面容器 */
+    form {
+      background-color: #fff;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    /* 隱藏不需要顯示的 input */
+    form input[type="hidden"] {
+      display: none;
+    }
+    /* 搜尋框與按鈕容器，採用 Flex 排列 */
+    .search-container {
+      display: flex;
+      width: 100%;
+    }
+    /* 文字輸入框 */
+    form input[type="text"] {
+      flex-grow: 1;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #374151;
+      border-right: none;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+      transition: border-color 0.2s ease-in-out;
+    }
+    form input[type="text"]:focus {
+      border-color: #007BFF;
+    }
+    /* 送出按鈕 */
+    form button {
+      background-color: #374151;
+      color: #fff;
+      border: 1px solid #374151;
+      font-size: 1rem;
+      padding: 10px 20px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+    form button:hover {
+      background-color: #D1D5DB;
+      color: #374151;
+    }
+  </style>
+</head>
+<body>
+
+  <form onsubmit="return setupFeloSearchAction(event)">
+    <input type="hidden" name="site" value="tylin23.tw" />
+    <input type="hidden" name="inviteCode" value="B84K3x3wo0Xr0" />
+    <div class="search-container">
+      <input type="text" name="query" value="" placeholder="以 Felo AI 搜尋本站" />
+      <button type="submit"><img src="https://felo.ai/icon.svg" alt="Felo AI Logo" style="width:30px; height:30px; margin-top:2px;"></button>
+    </div>
+  </form>
+
+  <script>
+    function setupFeloSearchAction(event) {
+      event.preventDefault(); // 阻止預設表單提交行為
+      let query = event.target.elements.query.value.trim();
+      if (query.length === 0) {
+        return false;
+      }
+      query = query + ' site:' + event.target.elements.site.value;
+      query = encodeURIComponent(query);
+
+      let url = 'https://felo.ai/search?q=' + query + '&mode=verbose';
+      url = url + '&invite=' + event.target.elements.inviteCode.value;
+      window.open(url, '_blank');
+      return false;
+    }
+  </script>
+
+</body>
+</html>
