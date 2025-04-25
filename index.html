@@ -35,9 +35,12 @@
       display: flex;
       align-items: center;
       width: 100%;
+      height: 48px;
+      border-radius: 24px;
     }
     /* 文字輸入框 */
     form input[type="text"] {
+      height: 100%;
       flex-grow: 1;
       padding: 10px;
       font-size: 1rem;
@@ -52,6 +55,7 @@
     }
     /* 送出按鈕 */
     form button {
+      height: 100%;
       background-color: #374151;
       color: #fff;
       border: 1px solid #374151;
@@ -65,12 +69,20 @@
       background-color: #D1D5DB;
       color: #374151;
     }
-    @media (max-width: 400px) {
-      form { padding: 15px; margin: 20px; }
+    @media (max-width: 480px) {
+      .search-container {
+        height: 44px;
+      }
+
       .search-container button {
-        padding: 10px;    /* 手機上按鈕不要太寬 */
+        width: 50px;
       }
+
+      .search-container button img {
+        width: 24px;
+        height: 24px;
       }
+    }
   </style>
 </head>
 <body>
