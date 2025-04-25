@@ -18,6 +18,7 @@
     }
     /* 版面容器 */
     form {
+      width: 100%;
       background-color: #fff;
       max-width: 500px;
       margin: 50px auto;
@@ -32,6 +33,7 @@
     /* 搜尋框與按鈕容器，採用 Flex 排列 */
     .search-container {
       display: flex;
+      align-items: center;
       width: 100%;
     }
     /* 文字輸入框 */
@@ -63,6 +65,12 @@
       background-color: #D1D5DB;
       color: #374151;
     }
+    @media (max-width: 400px) {
+      form { padding: 15px; margin: 20px; }
+      .search-container button {
+        padding: 10px;    /* 手機上按鈕不要太寬 */
+      }
+      }
   </style>
 </head>
 <body>
